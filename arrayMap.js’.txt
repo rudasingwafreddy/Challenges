@@ -1,0 +1,26 @@
+def has_contiguous_subarray_with_sum(arr, target):
+    prefix_sums = set()
+    current_sum = 0
+    
+    for num in arr:
+        current_sum += num
+
+        if current_sum == target:
+            return True
+        
+        if (current_sum - target) in prefix_sums:
+            return True
+
+        prefix_sums.add(current_sum)
+    
+    return False
+
+arr1 = [1, 2, 3, 7, 5]
+target1 = 12
+print(has_contiguous_subarray_with_sum(arr1, target1))  # Output: True
+
+arr2 = [1, 2, 3, 4, 5]
+target2 = 11
+print(has_contiguous_subarray_with_sum(arr2, target2))  # Output: False
+
+
